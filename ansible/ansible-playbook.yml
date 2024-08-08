@@ -1,0 +1,31 @@
+---
+- name: Setup and Run QR Code App in Docker Container
+  hosts: qr_code_app  
+  become: true
+  tasks:
+    # - name: Install Docker
+    #   apt:
+    #     name:
+    #       - docker.io
+    #     state: present
+    #     update_cache: yes
+
+    # - name: Install Docker Python module
+    #   pip:
+    #     name: docker
+    #     executable: pip3
+
+    - name: Pull the QR Code Docker image from DockerHub
+      docker_image:
+        name: bola278/app_py
+        tag: latest
+        source: pull
+
+    - name: Run the QR Code container
+      docker_container:
+        name: qr_code_app
+        image: bola278/app_py
+        state: started
+        restart_policy: always
+        ports:
+          - "80:8080"
