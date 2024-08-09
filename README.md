@@ -20,34 +20,44 @@ git clone https://github.com/BolaWagdy/QR-Code.git
 cd QR-Code
 ```
 
-#### Step2: Virtual Environment
+
+#### Step2: Testing 
+
+```bash
+apt install python3-pytest
+cd app_py
+pytest
+```
+
+#### Step3: Virtual Environment
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-#### Step3: Install Dependencies
+#### Step4: Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
 ## 2. Docker
-- For Docker-based installation, ensure Docker is installed from this steps.
+![img](https://images.shiksha.com/mediadata/images/articles/1700649967php8v6tWG.jpeg)
+- Docker installation
 
-```bash
-# Install docker, buildx, and docker-compose
-sudo apt install docker.io docker-compose docker-buildx
+    ```bash
+    # Install docker, buildx, and docker-compose
+    sudo apt install docker.io docker-compose docker-buildx
 
-# Post installation steps: to run docker without sudo
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
+    # Post installation steps: to run docker without sudo
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker
 
-# Test installation
-docker run hello-world
-```
+    # Test installation
+    docker run hello-world
+    ```
 ### Build & Run Docker Image
 
 ```bash
@@ -84,6 +94,8 @@ docker pull bola278/app_py
 ```
 ## 3. Jenkins
 
+![img](https://www.jenkins.io/images/post-images/blueocean/pipeline-run.png)
+
 - Jenkins Installation
 
     > Docs: <https://www.jenkins.io/doc/book/installing/linux>
@@ -104,6 +116,8 @@ docker pull bola278/app_py
 
 ## 4. Ansible
 
+![img](https://cdn.hashnode.com/res/hashnode/image/upload/v1689150053976/ab2d96c7-398a-42da-a6a6-bb0f7842d97a.webp?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp)
+
 - Ansible installation
 
     > Reference: <https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html>
@@ -122,6 +136,7 @@ docker pull bola278/app_py
   ```
 
 ## 5. Terraform
+![img](https://developer.hashicorp.com/_next/image?url=https%3A%2F%2Fcontent.hashicorp.com%2Fapi%2Fassets%3Fproduct%3Dterraform%26version%3Drefs%252Fheads%252Fv1.9%26asset%3Dwebsite%252Fimg%252Fdocs%252Fintro-terraform-apis.png%26width%3D2048%26height%3D644&w=2048&q=75&dpl=dpl_AsSRcRKA9VSqCeGAyCyNSd63nA73)
 
 - Download and install [Terraform CLI](https://www.terraform.io/downloads).
 
@@ -141,7 +156,7 @@ docker pull bola278/app_py
     sudo ./aws/install
     aws configure
     ```
-- Run
+- Run terraform
 
     ```bash
     terraform init       # Prepare workspace and download providers
