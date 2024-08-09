@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/BolaWagdy/QR-Code.git'
+                git branch: 'main', url: 'https://github.com/BolaWagdy/QR-flask-app.git'
             }
         }
         stage('Set up Python') {
