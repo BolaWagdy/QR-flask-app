@@ -38,5 +38,15 @@
             "region": "Unknown",
             "country": "Unknown"
         }
+    },
+    {
+        "timestamp": "2024-08-09T14:12:24.166807",
+        "ip_address": "127.0.0.1",
+        "text": "asdasd",
+        "location": {
+            "city": "Unknown",
+            "region": "Unknown",
+            "country": "Unknown"
+        }
     }
 ]
