@@ -9,6 +9,7 @@
 # Installation
 
 ## 1. Python3
+![img](https://ctf-cci-com.imgix.net/1vibQmk6bIzcqa7IOAhMcU/721c31daca3424f098689844146df25a/2024-05-30-testing-for-python.png?ixlib=rb-3.2.1&w=2000&auto=format&fit=max&q=60&ch=DPR%2CWidth%2CViewport-Width%2CSave-Data)
 - Ensure you have Python installed. Download it from [python.org](https://www.python.org/downloads/).
 
 ### Documentation
@@ -43,7 +44,7 @@ pip install -r requirements.txt
 ```
 
 ## 2. Docker
-![img](https://images.shiksha.com/mediadata/images/articles/1700649967php8v6tWG.jpeg)
+![img](https://media.licdn.com/dms/image/D5612AQGeEHapUptoxw/article-cover_image-shrink_600_2000/0/1684079864237?e=2147483647&v=beta&t=UUUAS5PPyisf3YVxC_VFidjxwFeTZwfpb1y4dH0G5xs)
 - Docker installation
 
     ```bash
