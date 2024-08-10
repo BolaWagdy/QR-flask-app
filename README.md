@@ -136,6 +136,12 @@ docker pull bola278/app_py
   pipx install ansible-lint
   ```
 
+- Run ansible file
+  ```bash
+  cd ansible
+  ansible-playbook.yml -i hosts.ini ansible-playbook.yml
+  ```
+
 ## 5. Terraform
 ![img](https://developer.hashicorp.com/_next/image?url=https%3A%2F%2Fcontent.hashicorp.com%2Fapi%2Fassets%3Fproduct%3Dterraform%26version%3Drefs%252Fheads%252Fv1.9%26asset%3Dwebsite%252Fimg%252Fdocs%252Fintro-terraform-apis.png%26width%3D2048%26height%3D644&w=2048&q=75&dpl=dpl_AsSRcRKA9VSqCeGAyCyNSd63nA73)
 
