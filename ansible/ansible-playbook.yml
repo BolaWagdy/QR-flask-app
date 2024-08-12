@@ -3,18 +3,6 @@
   hosts: qr_code_app  
   become: true
   tasks:
-    # - name: Install Docker
-    #   apt:
-    #     name:
-    #       - docker.io
-    #     state: present
-    #     update_cache: yes
-
-    # - name: Install Docker Python module
-    #   pip:
-    #     name: docker
-    #     executable: pip3
-
     - name: Pull the QR Code Docker image from DockerHub
       docker_image:
         name: bola278/app_py
