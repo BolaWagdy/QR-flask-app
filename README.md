@@ -6,6 +6,46 @@
 - Generate QR codes for any text or URL.
 - Save QR codes in image formats.
 
+# Project structure
+```
+└──.github
+    └── 📁workflows
+        └── main.yml
+└── 📁ansible
+    └── 📁roles
+        └── 📁docker
+            └── 📁tasks
+                └── main.yml
+    └── ansible-playbook.yml
+    └── ansible.cfg
+    └── hosts.ini
+└── 📁app_py
+    └── 📁db
+        └── analyze.py
+        └── users_visits.json
+    └── 📁static
+        └── 📁css
+            └── bootstrap.min.css
+    └── 📁templates
+        └── home.html
+    └── 📁tests
+        └── __init__.py
+        └── test_index.py
+    └── 📁uploads
+        └── qr-code.png
+        └── share.png
+    └── app.py
+    └── Dockerfile
+    └── requirements.txt
+    └── wsgi.py
+└── 📁terraform
+    └── .terraform.lock.hcl
+    └── terraform-ec2.tf
+└── .gitignore
+└── index.html
+└── Jenkinsfile               
+```
+
 # Installation
 
 ## 1. Python3
@@ -134,6 +174,16 @@ docker pull bola278/app_py
 
   ```bash
   pipx install ansible-lint
+  ```
+  > [!NOTE]  
+  > Before you run ansible you should have: 
+  > 1. Started a lab on AWS 
+  > 2. Downloaded labsuser.pem
+
+- Then give permission to labsuser.pem
+  ```bash
+  cd Downloads
+  sudo chmod 400 labsuser.pem
   ```
 
 - Run ansible file
