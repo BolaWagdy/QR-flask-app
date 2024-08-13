@@ -175,7 +175,7 @@ docker pull bola278/app_py
   ```bash
   pipx install ansible-lint
   ```
-  > [!NOTE]
+  > [!NOTE]  
   > Before you run ansible you should have: 
 
 - Then give permission to labsuser.pem
