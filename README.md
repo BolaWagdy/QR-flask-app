@@ -229,7 +229,7 @@ docker run -p8080:8080 app_py
 - Before run
 
     ```bash
-    nano ~/.aws/credential # Update with your AWS lab credential
+    nano ~/.aws/credential # Update with your AWS lab credentials
     ```
 
 - Run terraform
