@@ -2,6 +2,8 @@
 - name: Setup and Run QR Code App in Docker Container
   hosts: qr_code_app  
   become: true
+  roles:
+    - docker 
   tasks:
     - name: Pull the QR Code Docker image from DockerHub
       docker_image:
