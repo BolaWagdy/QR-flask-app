@@ -6,42 +6,82 @@
 - Generate QR codes for any text or URL.
 - Save QR codes in image formats.
 
+# Project structure
+```
+└──.github
+    └── 📁workflows
+        └── main.yml
+└── 📁ansible
+    └── 📁roles
+        └── 📁docker
+            └── 📁tasks
+                └── main.yml
+    └── ansible-playbook.yml
+    └── ansible.cfg
+    └── hosts.ini
+└── 📁app_py
+    └── 📁db
+        └── analyze.py
+        └── users_visits.json
+    └── 📁static
+        └── 📁css
+            └── bootstrap.min.css
+    └── 📁templates
+        └── home.html
+    └── 📁tests
+        └── __init__.py
+        └── test_index.py
+    └── 📁uploads
+        └── qr-code.png
+        └── share.png
+    └── app.py
+    └── Dockerfile
+    └── requirements.txt
+    └── wsgi.py
+└── 📁terraform
+    └── .terraform.lock.hcl
+    └── terraform-ec2.tf
+└── .gitignore
+└── index.html
+└── Jenkinsfile               
+```
+
 # Installation
 
 ## 1. Python3
 ![img](https://ctf-cci-com.imgix.net/1vibQmk6bIzcqa7IOAhMcU/721c31daca3424f098689844146df25a/2024-05-30-testing-for-python.png?ixlib=rb-3.2.1&w=2000&auto=format&fit=max&q=60&ch=DPR%2CWidth%2CViewport-Width%2CSave-Data)
-- Ensure you have Python installed. Download it from [python.org](https://www.python.org/downloads/).
+> Ensure you have Python installed. Download it from [python.org](https://www.python.org/downloads/).
 
-### Documentation
+### Documentation steps:
 
-#### Step1: Clone the repository
+- Step1: Clone the repository
 
-```bash
-git clone https://github.com/BolaWagdy/QR-Code.git
-cd QR-Code
-```
+    ```bash
+    git clone https://github.com/BolaWagdy/QR-Code.git
+    cd QR-Code
+    ```
 
 
-#### Step2: Testing 
+- Step2: Testing 
 
-```bash
-apt install python3-pytest
-cd app_py
-pytest
-```
+    ```bash
+    apt install python3-pytest
+    cd app_py
+    pytest
+    ```
 
-#### Step3: Virtual Environment
+- Step3: Virtual Environment
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
-#### Step4: Install Dependencies
+- Step4: Install Dependencies
 
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## 2. Docker
 ![img](https://media.licdn.com/dms/image/D5612AQGeEHapUptoxw/article-cover_image-shrink_600_2000/0/1684079864237?e=2147483647&v=beta&t=UUUAS5PPyisf3YVxC_VFidjxwFeTZwfpb1y4dH0G5xs)
@@ -59,6 +99,7 @@ pip install -r requirements.txt
     # Test installation
     docker run hello-world
     ```
+    
 ### Build & Run Docker Image
 
 ```bash
@@ -66,33 +107,33 @@ docker build -t app_py .
 docker run -p8080:8080 app_py
 ```
 
-### Push to Docker Hub
+### Push to Docker Hub steps:
 > [!NOTE]  
-> Link on Dockerhub: https://hub.docker.com/repository/docker/bola278/app_py/general            
+> Repo link on Docker Hub: https://hub.docker.com/repository/docker/bola278/app_py/general            
 
-#### Step 1: Tag Your Docker Image
+- Step 1: Tag Your Docker Image
 
-```bash
-docker tag app_py:latest bola278/app_py:latest
-```
+    ```bash
+    docker tag app_py:latest bola278/app_py:latest
+    ```
 
-#### Step 2: Login to Docker Hub
+- Step 2: Login to Docker Hub
 
-```bash
-docker login
-```
+    ```bash
+    docker login
+    ```
 
-#### Step 3: Push to Docker Hub
+- Step 3: Push to Docker Hub
 
-```bash
-docker push bola278/app_py:latest
-```
+    ```bash
+    docker push bola278/app_py:latest
+    ```
 
-#### Step4: Pull from Docker Hub
+- Step4: Pull from Docker Hub
 
-```bash
-docker pull bola278/app_py
-```
+    ```bash
+    docker pull bola278/app_py
+    ```
 ## 3. Jenkins
 
 ![img](https://www.jenkins.io/images/post-images/blueocean/pipeline-run.png)
@@ -115,6 +156,23 @@ docker pull bola278/app_py
     sudo cat /var/lib/jenkins/secrets/initialAdminPassword
     ```
 
+### Best practices:
+- **Use an IDE plugin** for help with syntax highlighting and linting of `Jenkinsfile`.
+- **When running Jenkins as a docker container**
+  - Use the official and maintained image for Jenkins.
+    - [Official Image](https://hub.docker.com/r/jenkins/jenkins) at the time of writing this.
+  - Use `Dockerfile` and `docker-compose.yaml` for Jenkins deployment instead of running a long, undocumented command in the terminal.
+  - Pay attention to the base OS and the user under which the container is running since:
+    - Using `sh` in `Jenkinsfile` runs commands under that user and that base OS.
+    - Running docker commands (e.g., `docker push`) from Jenkinsfile can be problematic when Jenkins itself is running as a docker container [[solution](http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)].
+- **Use maintained plugins instead of shell scripts for:**
+  - Setting up tools, environment and dependencies (it makes build faster and more portable).
+  - Working with credentials for Jenkins and 3rd party integrations (it’s more secure and organized).
+- **In production environments:**
+  - Create users and configure access controls for them, not everyone should have access to the admin credentials.
+  - Set up distributed builds as building on the built-in node can be a security issue.
+
+
 ## 4. Ansible
 
 ![img](https://cdn.hashnode.com/res/hashnode/image/upload/v1689150053976/ab2d96c7-398a-42da-a6a6-bb0f7842d97a.webp?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp)
@@ -134,6 +192,11 @@ docker pull bola278/app_py
 
   ```bash
   pipx install ansible-lint
+  ```
+- Give permission to labsuser.pem
+  ```bash
+  cd Downloads
+  sudo chmod 400 labsuser.pem
   ```
 
 - Run ansible file
@@ -163,12 +226,17 @@ docker pull bola278/app_py
     sudo ./aws/install
     aws configure
     ```
-- Run terraform
+- Before run
 
+    ```bash
+    nano ~/.aws/credentials # Update with your AWS lab credentials
+    ```
+
+- Run terraform
     ```bash
     terraform init       # Prepare workspace and download providers
     terraform validate   # Check configuration for validity
     terraform fmt        # Format source file
     terraform plan       # Show execution plan
-    terraform apply
+    terraform apply      # Apply all
     ```
