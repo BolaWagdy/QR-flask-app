@@ -240,3 +240,34 @@ docker run -p8080:8080 app_py
     terraform plan       # Show execution plan
     terraform apply      # Apply all
     ```
+## 6. Kubernetes
+![img](https://dt-cdn.net/wp-content/uploads/2023/01/BAE3222_RC_K8s2023_800x450_FINAL.png)
+
+- kubernetes installation
+
+    1. Install [kubectl](https://kubernetes.io/docs/tasks/tools/) and [minikube](https://minikube.sigs.k8s.io/docs/start/)
+
+    2. Run minikube start to start a local k8s cluster and configure kubectl to interact with it.
+
+## Apply the Kubernetes Configuration steps:
+- Step 1: Start Minikube
+    ```bash
+    cd k8s
+    cd minikube
+    minikube start
+    ```
+
+- Step 2: Apply all
+    ```bash
+    kubectl apply -f namespace.yaml -f deployment.yaml -f service.yaml -f ingress.yaml
+    ```
+    
+
+## Show running logs
+```bash
+kubectl get all -n app-ns
+```
+## URL link generator 
+```bash
+ minikube service -n app-ns qr-flask-app-service --url
+```
