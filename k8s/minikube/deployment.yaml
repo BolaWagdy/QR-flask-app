@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qr-flask-app-deployment
+  namespace: app-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: qr-flask-app
+  template:
+    metadata:
+      labels:
+        app: qr-flask-app
+    spec:
+      containers:
+      - name: flask-container
+        env: 
+        - name: TEST_ENV
+          value: "Set by K8s"
+        image: bola278/app_py:latest
+        command: ["python"]
+        args: ["app.py"]
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: app-volume
+          mountPath: /app
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      volumes:
+      - name: app-volume
+        emptyDir:
+          sizeLimit: 500Mi
+        

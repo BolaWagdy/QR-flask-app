@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qr-flask-app-ingress
+  namespace: app-ns
+spec:
+  rules:
+  - host: qrflaskapp.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: qr-flask-app-service
+            port:
+              number: 80

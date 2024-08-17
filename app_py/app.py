@@ -3,6 +3,7 @@ from io import BytesIO
 import qrcode
 import json
 import datetime
+import requests
 
 app = Flask(__name__)
 
