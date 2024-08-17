@@ -18,11 +18,6 @@
     repo:  "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | lower }} stable"
     filename: docker
     update_cache: true
-<<<<<<< HEAD
-=======
-
->>>>>>> f392168267f7f7b78bf4c474165ec3c731624c61
-
 
 - name: Install docker 
   ansible.builtin.apt:
