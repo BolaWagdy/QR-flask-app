@@ -342,8 +342,8 @@ kubectl get all -n app-ns
    ```
 
 ### Step 4: Configure Prometheus as a Data Source in Grafana
-    1. Go to **Connections > Data Sources**.
-    2. Select **Prometheus** and provide the service URL `http://prometheus-server.monitoring.svc.cluster.local`.
+1. Go to **Connections > Data Sources**.
+2. Select **Prometheus** and provide the service URL `http://prometheus-server.monitoring.svc.cluster.local`.
 
 ### Step 5: Visualize Metrics
    - Go to **Dashboards > Import** and use an existing Prometheus dashboard ID ( **6417** for Kubernetes monitoring ).
