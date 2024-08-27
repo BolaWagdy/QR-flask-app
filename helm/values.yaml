@@ -1,0 +1,52 @@
+namespace: app-ns
+
+app:
+  name: qr-flask-app
+
+replicaCount: 2
+
+image:
+  repository: bola278/app_py
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: qr-flask-app.local
+      paths:
+        - /
+  tls: []
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+persistence:
+  enabled: false
+  accessMode: ReadWriteOnce
+  size: 1Gi
+
+# Security context
+securityContext:
+  enabled: true
+  runAsUser: 1000
+  fsGroup: 1000
+
+# Node selector, tolerations, and affinity
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+rbac:
+  create: true

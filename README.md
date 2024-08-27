@@ -38,6 +38,15 @@
     └── Dockerfile
     └── requirements.txt
     └── wsgi.py
+└── 📁helm
+    └── 📁k8s
+        └── 📁minikube
+            └── deployment.yaml
+            └── ingress.yaml
+            └── namespace.yaml
+            └── service.yaml
+    └── chart.yaml
+    └── values.yaml
 └── 📁terraform
     └── .terraform.lock.hcl
     └── terraform-ec2.tf
@@ -252,6 +261,7 @@ docker run -p8080:8080 app_py
 ## Apply the Kubernetes Configuration steps:
 - Step 1: Start Minikube
     ```bash
+    cd helm
     cd k8s
     cd minikube
     minikube start
@@ -271,3 +281,73 @@ kubectl get all -n app-ns
 ```bash
  minikube service -n app-ns qr-flask-app-service --url
 ```
+
+
+
+
+## 7. Deploying a monitoring and visualization stack with Prometheus and Grafana on can be broken down into a series steps:
+![img](https://www.skedler.com/blog/wp-content/uploads/2021/08/grafana-logo.png)
+
+### Prerequisites
+1. **Kubernetes Cluster**: Ensure you have a running Kubernetes cluster.
+2. **kubectl**: Command-line tool for interacting with your Kubernetes cluster.
+3. **Helm**: Kubernetes package manager, useful for installing Prometheus and Grafana.
+
+### Step 1: Install Helm
+1. **Install Helm** on your local machine:
+   ```bash
+   curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+   ```
+
+2. **Add Helm Repositories** for Prometheus and Grafana:
+   ```bash
+   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   helm repo add grafana https://grafana.github.io/helm-charts
+   helm repo update
+   ```
+
+### Step 2: Deploy Prometheus
+1. **Create a namespace** for monitoring (optional but recommended):
+   ```bash
+   kubectl create namespace monitoring
+   ```
+
+2. **Install Prometheus** using Helm:
+   ```bash
+   helm install prometheus prometheus-community/prometheus --namespace monitoring
+   ```
+
+3. **Verify the installation**:
+   ```bash
+   kubectl get pods -n monitoring
+   ```
+### Step 3: Deploy Grafana
+1. **Install Grafana** using Helm:
+   ```bash
+   helm install grafana grafana/grafana --namespace monitoring
+   ```
+
+2. **Expose Grafana**:
+   By default, Grafana will be exposed as a ClusterIP service.
+   ```bash
+   kubectl expose service grafana --type=NodePort --name=grafana-nodeport --namespace monitoring
+   ```
+
+3. **Retrieve the Grafana admin password**: For login on Grafana page
+    1. **Username: admin**
+   ```bash
+   kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+   ```
+
+4. **Access Grafana**:
+   ```bash
+   kubectl port-forward --namespace monitoring service/grafana 3000:80
+   ```
+
+### Step 4: Configure Prometheus as a Data Source in Grafana
+   - 1. Go to **Connections > Data Sources**.
+   - 2. Select **Prometheus** and provide the service URL `http://prometheus-server.monitoring.svc.cluster.local`.
+
+### Step 5: Visualize Metrics
+**Import a Dashboard**:
+   - Go to **Dashboards > Import** and use an existing Prometheus dashboard ID ( **6417** for Kubernetes monitoring ).
