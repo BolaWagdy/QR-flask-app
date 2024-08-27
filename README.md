@@ -38,6 +38,7 @@
     └── Dockerfile
     └── requirements.txt
     └── wsgi.py
+<<<<<<< HEAD
 └── 📁helm
     └── 📁k8s
         └── 📁minikube
@@ -47,6 +48,14 @@
             └── service.yaml
     └── chart.yaml
     └── values.yaml
+=======
+└── 📁k8s
+    └── 📁minikube
+        └── deployment.yaml
+        └── ingress.yaml
+        └── namespace.yaml
+        └── service.yaml
+>>>>>>> 2909014092bf787e71b766ac33cf826bb9722a5c
 └── 📁terraform
     └── .terraform.lock.hcl
     └── terraform-ec2.tf
@@ -281,6 +290,7 @@ kubectl get all -n app-ns
 ```bash
  minikube service -n app-ns qr-flask-app-service --url
 ```
+<<<<<<< HEAD
 
 
 
