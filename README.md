@@ -259,7 +259,7 @@ docker run -p8080:8080 app_py
     terraform apply      # Apply all
     ```
 ## 6. Kubernetes
-![img](https://dt-cdn.net/wp-content/uploads/2023/01/BAE3222_RC_K8s2023_800x450_FINAL.png](https://sue.nl/wp-content/uploads/sites/8/2022/09/6.png)
+![img](https://sue.nl/wp-content/uploads/sites/8/2022/09/6.png)
 
 - kubernetes installation
 
