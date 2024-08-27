@@ -290,10 +290,6 @@ kubectl get all -n app-ns
 ```bash
  minikube service -n app-ns qr-flask-app-service --url
 ```
-<<<<<<< HEAD
-
-
-
 
 ## 7. Deploying a monitoring and visualization stack with Prometheus and Grafana on can be broken down into a series steps:
 ![img](https://www.skedler.com/blog/wp-content/uploads/2021/08/grafana-logo.png)
@@ -359,5 +355,4 @@ kubectl get all -n app-ns
    - 2. Select **Prometheus** and provide the service URL `http://prometheus-server.monitoring.svc.cluster.local`.
 
 ### Step 5: Visualize Metrics
-**Import a Dashboard**:
    - Go to **Dashboards > Import** and use an existing Prometheus dashboard ID ( **6417** for Kubernetes monitoring ).
