@@ -331,7 +331,7 @@ kubectl get all -n app-ns
    ```
 
 3. **Retrieve the Grafana admin password**: For login on Grafana page
-    1. **Username: admin**
+   1. **Username:** admin
    ```bash
    kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
    ```
