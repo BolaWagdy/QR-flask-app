@@ -282,7 +282,7 @@ kubectl get all -n app-ns
  minikube service -n app-ns qr-flask-app-service --url
 ```
 
-## 7. Deploying a monitoring and visualization stack with Prometheus and Grafana on can be broken down into a series steps:
+## 7. Grafana:
 ![img](https://www.skedler.com/blog/wp-content/uploads/2021/08/grafana-logo.png)
 
 ### Prerequisites
