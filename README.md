@@ -67,20 +67,19 @@
     cd QR-Code
     ```
 
-
-- Step2: Testing 
-
-    ```bash
-    apt install python3-pytest
-    cd app_py
-    pytest
-    ```
-
-- Step3: Virtual Environment
+- Step2: Download Virtual Environment
 
     ```bash
     python3 -m venv venv
     source venv/bin/activate
+    ```
+    
+- Step3: Testing 
+
+    ```bash
+    cd app_py
+    pip install pytest
+    pytest
     ```
 
 - Step4: Install Dependencies
