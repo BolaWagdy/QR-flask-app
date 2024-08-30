@@ -38,15 +38,12 @@
     └── Dockerfile
     └── requirements.txt
     └── wsgi.py
-└── 📁helm
-    └── 📁k8s
-        └── 📁minikube
-            └── deployment.yaml
-            └── ingress.yaml
-            └── namespace.yaml
-            └── service.yaml
-    └── chart.yaml
-    └── values.yaml
+└── 📁k8s
+    └── 📁minikube
+        └── deployment.yaml
+        └── ingress.yaml
+        └── namespace.yaml
+        └── service.yaml
 └── 📁terraform
     └── .terraform.lock.hcl
     └── terraform-ec2.tf
