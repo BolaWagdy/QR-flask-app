@@ -38,7 +38,6 @@
     └── Dockerfile
     └── requirements.txt
     └── wsgi.py
-<<<<<<< HEAD
 └── 📁helm
     └── 📁k8s
         └── 📁minikube
@@ -48,14 +47,6 @@
             └── service.yaml
     └── chart.yaml
     └── values.yaml
-=======
-└── 📁k8s
-    └── 📁minikube
-        └── deployment.yaml
-        └── ingress.yaml
-        └── namespace.yaml
-        └── service.yaml
->>>>>>> 2909014092bf787e71b766ac33cf826bb9722a5c
 └── 📁terraform
     └── .terraform.lock.hcl
     └── terraform-ec2.tf
@@ -259,7 +250,7 @@ docker run -p8080:8080 app_py
     terraform apply      # Apply all
     ```
 ## 6. Kubernetes
-![img](https://dt-cdn.net/wp-content/uploads/2023/01/BAE3222_RC_K8s2023_800x450_FINAL.png)
+![img](https://sue.nl/wp-content/uploads/sites/8/2022/09/6.png)
 
 - kubernetes installation
 
@@ -290,10 +281,6 @@ kubectl get all -n app-ns
 ```bash
  minikube service -n app-ns qr-flask-app-service --url
 ```
-<<<<<<< HEAD
-
-
-
 
 ## 7. Deploying a monitoring and visualization stack with Prometheus and Grafana on can be broken down into a series steps:
 ![img](https://www.skedler.com/blog/wp-content/uploads/2021/08/grafana-logo.png)
@@ -355,9 +342,9 @@ kubectl get all -n app-ns
    ```
 
 ### Step 4: Configure Prometheus as a Data Source in Grafana
-   - 1. Go to **Connections > Data Sources**.
-   - 2. Select **Prometheus** and provide the service URL `http://prometheus-server.monitoring.svc.cluster.local`.
+1. Go to **Connections > Data Sources**.
+2. Select **Prometheus** and provide the service URL `http://prometheus-server.monitoring.svc.cluster.local`.
+
 
 ### Step 5: Visualize Metrics
-**Import a Dashboard**:
    - Go to **Dashboards > Import** and use an existing Prometheus dashboard ID ( **6417** for Kubernetes monitoring ).
