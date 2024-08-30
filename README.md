@@ -282,7 +282,7 @@ kubectl get all -n app-ns
  minikube service -n app-ns qr-flask-app-service --url
 ```
 
-## 7. Deploying a monitoring and visualization stack with Prometheus and Grafana on can be broken down into a series steps:
+## 7. Grafana:
 ![img](https://www.skedler.com/blog/wp-content/uploads/2021/08/grafana-logo.png)
 
 ### Prerequisites
@@ -331,7 +331,7 @@ kubectl get all -n app-ns
    ```
 
 3. **Retrieve the Grafana admin password**: For login on Grafana page
-    1. **Username: admin**
+   1. **Username:** admin
    ```bash
    kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
    ```
@@ -344,7 +344,6 @@ kubectl get all -n app-ns
 ### Step 4: Configure Prometheus as a Data Source in Grafana
 1. Go to **Connections > Data Sources**.
 2. Select **Prometheus** and provide the service URL `http://prometheus-server.monitoring.svc.cluster.local`.
-
 
 ### Step 5: Visualize Metrics
    - Go to **Dashboards > Import** and use an existing Prometheus dashboard ID ( **6417** for Kubernetes monitoring ).
