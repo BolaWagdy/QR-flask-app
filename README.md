@@ -92,6 +92,7 @@
 
     ```bash
     pip install -r requirements.txt
+    pip freeze > requirements.txt
     ```
 
 ## 2. Docker
