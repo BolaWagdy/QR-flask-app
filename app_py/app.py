@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, send_file
 from io import BytesIO
+from prometheus_flask_exporter import PrometheusMetrics
 import qrcode
 import json
 import datetime
 import requests
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 def get_location(ip_address):
     try:
