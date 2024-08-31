@@ -278,13 +278,12 @@ kubectl get all -n app-ns
  minikube service -n app-ns qr-flask-app-service --url
 ```
 
-## 7. Grafana:
+## 7. Grafana for monitoring and visualization stack:
 ![img](https://www.skedler.com/blog/wp-content/uploads/2021/08/grafana-logo.png)
 
 ### Prerequisites
-1. **Kubernetes Cluster**: Ensure you have a running Kubernetes cluster.
-2. **kubectl**: Command-line tool for interacting with your Kubernetes cluster.
-3. **Helm**: Kubernetes package manager, useful for installing Prometheus and Grafana.
+1. **kubectl**: Command-line tool for interacting with your Kubernetes cluster.
+2. **Helm**: Kubernetes package manager, useful for installing Prometheus and Grafana.
 
 ### Step 1: Install Helm
 1. **Install Helm** on your local machine:
@@ -299,42 +298,38 @@ kubectl get all -n app-ns
    helm repo update
    ```
 
-### Step 2: Deploy Prometheus
-1. **Create a namespace** for monitoring (optional but recommended):
+### Step 2: Deploy kube-prometheus-stack
+1. **Create a namespace** for monitoring:
    ```bash
    kubectl create namespace monitoring
    ```
 
-2. **Install Prometheus** using Helm:
+2. **Install kube-prometheus-stack chart** using Helm:
    ```bash
-   helm install prometheus prometheus-community/prometheus --namespace monitoring
+   # Add prometheus-community repo to helm
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+    # Update chart index
+    helm repo update
+
+    # Install kube-prometheus-stack in the monitoring namespace.
+    # Creating the namespace if required
+    helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring --create-namespace
    ```
 
 3. **Verify the installation**:
    ```bash
    kubectl get pods -n monitoring
    ```
-### Step 3: Deploy Grafana
-1. **Install Grafana** using Helm:
-   ```bash
-   helm install grafana grafana/grafana --namespace monitoring
-   ```
+### Step 3: Deploy Grafana 
 
-2. **Expose Grafana**:
-   By default, Grafana will be exposed as a ClusterIP service.
-   ```bash
-   kubectl expose service grafana --type=NodePort --name=grafana-nodeport --namespace monitoring
-   ```
-
-3. **Retrieve the Grafana admin password**: For login on Grafana page
+1. **Login on Grafana page**:
    1. **Username:** admin
-   ```bash
-   kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
-   ```
+   2. **Password:** prom-operator
 
-4. **Access Grafana**:
+2. **Access Grafana**:
    ```bash
-   kubectl port-forward --namespace monitoring service/grafana 3000:80
+    kubectl port-forward --namespace monitoring service/monitoring-grafana 3000:80
    ```
 
 ### Step 4: Configure Prometheus as a Data Source in Grafana
