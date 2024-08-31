@@ -44,6 +44,12 @@
         └── ingress.yaml
         └── namespace.yaml
         └── service.yaml
+└── 📁monitoring
+    └── 📁config
+        └── loki-config.yaml
+        └── prometheus-config.yaml
+        └── promtail-config.yaml
+    └── docker-compose.yaml
 └── 📁terraform
     └── .terraform.lock.hcl
     └── terraform-ec2.tf
