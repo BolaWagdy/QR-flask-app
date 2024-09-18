@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qr-flask-app-deployment
+  namespace: app-ns
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: qr-flask-app
+  template:
+    metadata:
+      labels:
+        app: qr-flask-app
+    spec:
+      containers:  
+      - name: flask-container
+        env:
+        - name: TEST_ENV
+          value: {{ .Values.env.TEST_ENV | quote }}
+        image: {{ .Values.image }}
+        command: ["python"]
+        args: ["app.py"]
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+        volumeMounts:
+        - name: app-volume
+          mountPath: /app
+        resources:
+          limits:
+            memory: {{ .Values.memoryLimit }}
+            cpu: {{ .Values.cpuLimit }}
+      volumes:
+      - name: app-volume
+        emptyDir:
+          sizeLimit: {{ .Values.volumes.sizeLimit }}    

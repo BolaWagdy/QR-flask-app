@@ -1,0 +1,21 @@
+---
+replicaCount: 3
+
+image: bola278/app_py:latest
+
+# Port exposed by application container
+containerPort: 8080
+
+# Port to expose by the created service
+servicePort: 80
+
+# Resource requests and limits for deployment
+cpuRequest: 2024m
+cpuLimit: 3036m
+memoryRequest: 4048Mi 
+memoryLimit: 4048Mi
+
+# Service configuration
+service:
+  type: LoadBalancer 
+  nodePort: 30080
