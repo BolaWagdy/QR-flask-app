@@ -1,5 +1,6 @@
 # QR-Code Generator
 ![example workflow](https://github.com/BolaWagdy/QR-flask-app/actions/workflows/main.yml/badge.svg)
+![img](https://cdn.prod.website-files.com/5e66ca0250be6103da645a88/64e8e27151312caec336a7db_How%20to%20Save%20a%20QR%20Code%20on%20Your%20Phone%20or%20Computer.webp)
 
 # Features
 
@@ -38,6 +39,13 @@
     └── Dockerfile
     └── requirements.txt
     └── wsgi.py
+└── 📁helm
+    └── 📁app-deployment
+    └── 📁templates
+        └── deployment.yaml
+        └── service.yaml
+    └── chart.yaml
+    └── values.yaml
 └── 📁k8s
     └── 📁minikube
         └── deployment.yaml
@@ -66,21 +74,22 @@
 
 ### Documentation steps:
 
-- Step1: Clone the repository
+- **Step1**: Clone the repository
 
     ```bash
     git clone https://github.com/BolaWagdy/QR-Code.git
     cd QR-Code
     ```
 
-- Step2: Download Virtual Environment
+- **Step2**: Download Virtual Environment
 
     ```bash
     python3 -m venv venv
     source venv/bin/activate
     ```
     
-- Step3: Testing 
+- **Step3**: Testing
+![img](https://geekpython.in/wp-content/uploads/2023/12/pytest.png) 
 
     ```bash
     cd app_py
@@ -88,7 +97,7 @@
     pytest
     ```
 
-- Step4: Install Dependencies
+- **Step4**: Install Dependencies
 
     ```bash
     pip install -r requirements.txt
@@ -146,7 +155,18 @@ docker run -p8080:8080 app_py
     ```bash
     docker pull bola278/app_py
     ```
-## 3. Jenkins
+## 3. CI/CD Pipline 
+![img](https://testrigor.com/wp-content/uploads/2023/11/What-is-the-CICD-Pipeline.png)
+**Continuous integration (CI)** is the practice of integrating source code changes frequently and ensuring that the integrated codebase is in a workable state.
+
+> Typically, developers merge changes to an integration branch, and an automated system builds and tests the software system. Often, the automated process runs on each commit or runs on a schedule such as once a day.
+
+**Continuous deployment** (**CD**) is a software engineering approach in which software functionalities are delivered frequently and through automated deployments.
+
+> Continuous deployment contrasts with **continuous delivery** (also abbreviated CD), a similar approach in which software functionalities are also frequently delivered and deemed to be potentially capable of being deployed, but are actually not deployed. As such, continuous deployment can be viewed as a more complete form of automation than continuous delivery
+
+
+## 4. Jenkins
 
 ![img](https://www.jenkins.io/images/post-images/blueocean/pipeline-run.png)
 
@@ -185,7 +205,7 @@ docker run -p8080:8080 app_py
   - Set up distributed builds as building on the built-in node can be a security issue.
 
 
-## 4. Ansible
+## 5. Ansible
 
 ![img](https://cdn.hashnode.com/res/hashnode/image/upload/v1689150053976/ab2d96c7-398a-42da-a6a6-bb0f7842d97a.webp?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp)
 
@@ -217,7 +237,7 @@ docker run -p8080:8080 app_py
   ansible-playbook.yml -i hosts.ini ansible-playbook.yml
   ```
 
-## 5. Terraform
+## 6. Terraform
 ![img](https://developer.hashicorp.com/_next/image?url=https%3A%2F%2Fcontent.hashicorp.com%2Fapi%2Fassets%3Fproduct%3Dterraform%26version%3Drefs%252Fheads%252Fv1.9%26asset%3Dwebsite%252Fimg%252Fdocs%252Fintro-terraform-apis.png%26width%3D2048%26height%3D644&w=2048&q=75&dpl=dpl_AsSRcRKA9VSqCeGAyCyNSd63nA73)
 
 - Download and install [Terraform CLI](https://www.terraform.io/downloads).
@@ -252,7 +272,7 @@ docker run -p8080:8080 app_py
     terraform plan       # Show execution plan
     terraform apply      # Apply all
     ```
-## 6. Kubernetes
+## 7. Kubernetes
 ![img](https://sue.nl/wp-content/uploads/sites/8/2022/09/6.png)
 
 - kubernetes installation
@@ -285,7 +305,7 @@ kubectl get all -n app-ns
  minikube service -n app-ns qr-flask-app-service --url
 ```
 
-## 7. Grafana for monitoring and visualization stack:
+## 8. Grafana for monitoring and visualization stack:
 ![img](https://www.skedler.com/blog/wp-content/uploads/2021/08/grafana-logo.png)
 
 ### Prerequisites
@@ -330,18 +350,20 @@ kubectl get all -n app-ns
    ```
 ### Step 3: Deploy Grafana 
 
-1. **Login on Grafana page**:
-   1. **Username:** admin
-   2. **Password:** prom-operator
-
-2. **Access Grafana**:
+1. **Access Grafana**:
    ```bash
     kubectl port-forward --namespace monitoring service/monitoring-grafana 3000:80
    ```
+
+2. **Open Grafana page** `https://localhost:3000`
+
+3. **Login to Grafana page**:
+   1. **Username:** admin
+   2. **Password:** prom-operator
 
 ### Step 4: Configure Prometheus as a Data Source in Grafana
 1. Go to **Connections > Data Sources**.
 2. Select **Prometheus** and provide the service URL `http://prometheus-server.monitoring.svc.cluster.local`.
 
-### Step 5: Visualize Metrics
-   - Go to **Dashboards > Import** and use an existing Prometheus dashboard ID ( **6417** for Kubernetes monitoring ).
+## 8. Helm
+![img](https://cdn.codersociety.com/uploads/Helm.png)
