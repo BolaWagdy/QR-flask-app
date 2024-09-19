@@ -38,6 +38,7 @@
     └── app.py
     └── Dockerfile
     └── requirements.txt
+    └── test.py
     └── wsgi.py
 └── 📁helm
     └── 📁app-deployment
@@ -59,8 +60,10 @@
         └── promtail-config.yaml
     └── docker-compose.yaml
 └── 📁terraform
-    └── .terraform.lock.hcl
-    └── terraform-ec2.tf
+    └── main.tf
+    └── outputs.tf
+    └── providers.tf
+    └── security_group.tf
 └── .gitignore
 └── index.html
 └── Jenkinsfile               
