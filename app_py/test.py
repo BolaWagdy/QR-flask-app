@@ -13,4 +13,4 @@ def test_home_page(client):
 
 def test_qr_code_generation(client):
     response = client.post('/', data={})
-    assert response.status_code == 400
+    assert response.status_code == 400 
