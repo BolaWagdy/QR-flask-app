@@ -106,6 +106,10 @@
     pip install -r requirements.txt
     pip freeze > requirements.txt
     ```
+-  **Step5**: Run the app
+    ```bash
+    python3 app.py
+    ```  
 
 ## 2. Docker
 ![img](https://media.licdn.com/dms/image/D5612AQGeEHapUptoxw/article-cover_image-shrink_600_2000/0/1684079864237?e=2147483647&v=beta&t=UUUAS5PPyisf3YVxC_VFidjxwFeTZwfpb1y4dH0G5xs)
