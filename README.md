@@ -97,7 +97,7 @@
     ```bash
     cd app_py
     pip install pytest
-    pytest
+    pytest test.py
     ```
 
 - **Step4**: Install Dependencies
