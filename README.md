@@ -315,6 +315,8 @@ kubectl get all -n app-ns
 ## 8. Grafana for monitoring and visualization stack:
 ![img](https://www.skedler.com/blog/wp-content/uploads/2021/08/grafana-logo.png)
 
+# 1. With kube-prometheus-stack
+
 ### Prerequisites
 1. **kubectl**: Command-line tool for interacting with your Kubernetes cluster.
 2. **Helm**: Kubernetes package manager, useful for installing Prometheus and Grafana.
@@ -368,9 +370,37 @@ kubectl get all -n app-ns
    1. **Username:** admin
    2. **Password:** prom-operator
 
-### Step 4: Configure Prometheus as a Data Source in Grafana
-1. Go to **Connections > Data Sources**.
-2. Select **Prometheus** and provide the service URL `http://prometheus-server.monitoring.svc.cluster.local`.
+# 2. With Docker Compose
+
+
+![img](https://anderfernandez.com/wp-content/uploads/2023/03/Docker-Compose.png)
+
+This setup uses Docker Compose to run an application and monitor its logs using Grafana and Loki.
+
+## Prerequisites
+
+- Docker
+- Docker Compose
+
+### Step1: Run Docker Compose
+```bash
+docker compose up
+```
+
+- Then login to grafana `https://localhost:3000`
+- Open the app `https://localhost:8080`
+- Prometheus status page`https://localhost:9090`
+
+1. **prometheus** 
+   - Show the metrics of the application
+
+2. **loki**
+   - Show the logs of the application from grafana as filtered logs
+
+### Step2: Stop Docker Compose
+```bash
+docker compose down
+```
 
 ## 8. Helm
 ![img](https://cdn.codersociety.com/uploads/Helm.png)
