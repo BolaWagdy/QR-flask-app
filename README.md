@@ -315,7 +315,7 @@ kubectl get all -n app-ns
 ## 8. Grafana for monitoring and visualization stack:
 ![img](https://www.skedler.com/blog/wp-content/uploads/2021/08/grafana-logo.png)
 
-# 1. With kube-prometheus-stack
+## 1. With kube-prometheus-stack
 
 ### Prerequisites
 1. **kubectl**: Command-line tool for interacting with your Kubernetes cluster.
@@ -370,7 +370,7 @@ kubectl get all -n app-ns
    1. **Username:** admin
    2. **Password:** prom-operator
 
-# 2. With Docker Compose
+## 2. With Docker Compose
 
 
 ![img](https://anderfernandez.com/wp-content/uploads/2023/03/Docker-Compose.png)
@@ -410,3 +410,43 @@ docker compose down
 
 ## 8. Helm
 ![img](https://cdn.codersociety.com/uploads/Helm.png)
+
+Helm is a package manager for Kubernetes that simplifies the deployment of applications by allowing you to define, install, and upgrade even the most complex Kubernetes applications using charts.
+## Prerequisites
+- Kubernetes
+- Helm
+
+### Install Helm
+-  ```bash
+   curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+   chmod 700 get_helm.sh
+   ./get_helm.sh
+   ```
+
+
+## Deployment
+
+- Run this command
+    ```bash
+    helm install < "name of helm" > < "directory" > --namespace < "namespace" > --create-namespace
+    ```
+
+- Check the status of the cluster
+
+  ```bash
+  kubectl get all -n app-ns
+  ``` 
+
+- The app will be accessed via the service 
+
+   ```bash
+   minikube service < "name of service" > -n < "namespace" >
+   ```
+
+## Cleanup
+
+- To delete all created:
+
+  ```bash
+  kubectl delete all --all -n < "namespace" >
+  ```
