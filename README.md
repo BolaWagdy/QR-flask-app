@@ -175,7 +175,7 @@ docker run -p8080:8080 app_py
 
 ## 4. Jenkins
 
-![img](https://www.jenkins.io/images/post-images/blueocean/pipeline-run.png)
+![img](https://mattermost.com/wp-content/uploads/2022/04/04_Jenkins_CI_CD@2x.webp)
 
 - Jenkins Installation
 
