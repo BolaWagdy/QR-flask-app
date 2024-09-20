@@ -387,16 +387,22 @@ This setup uses Docker Compose to run an application and monitor its logs using 
 docker compose up
 ```
 
+
 - Then login to grafana `https://localhost:3000`
+![alt text](app_py/uploads/grafana.png)
 - Open the app `https://localhost:8080`
+![alt text](app_py/uploads/program.png)
 - Prometheus status page`https://localhost:9090`
+![alt text](app_py/uploads/prometheus.png)
 
-1. **prometheus** 
+1. **Prometheus** 
    - Show the metrics of the application
+   ![alt text](app_py/uploads/metrics.png)
 
-2. **loki**
+2. **Loki**
    - Show the logs of the application from grafana as filtered logs
-
+   ![alt text](app_py/uploads/loki.png)
+   
 ### Step2: Stop Docker Compose
 ```bash
 docker compose down
