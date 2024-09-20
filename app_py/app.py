@@ -9,7 +9,7 @@ import requests
 app = Flask(__name__)
 metrics = PrometheusMetrics(app)
 
-def get_location(ip_address):
+def get_location(ip_address): 
     try:
         response = requests.get(f'http://ipinfo.io/{ip_address}/json')
         data = response.json()
