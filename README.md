@@ -72,7 +72,7 @@
 # Installation
 
 ## 1. Python3
-![img](https://ctf-cci-com.imgix.net/1vibQmk6bIzcqa7IOAhMcU/721c31daca3424f098689844146df25a/2024-05-30-testing-for-python.png?ixlib=rb-3.2.1&w=2000&auto=format&fit=max&q=60&ch=DPR%2CWidth%2CViewport-Width%2CSave-Data)
+![img](https://webandcrafts.com/_next/image?url=https%3A%2F%2Fadmin.wac.co%2Fuploads%2Fblog_05_cc7c2fe37f.png&w=4500&q=90)
 > Ensure you have Python installed. Download it from [python.org](https://www.python.org/downloads/).
 
 ### Documentation steps:
@@ -112,7 +112,7 @@
     ```  
 
 ## 2. Docker
-![img](https://media.licdn.com/dms/image/D5612AQGeEHapUptoxw/article-cover_image-shrink_600_2000/0/1684079864237?e=2147483647&v=beta&t=UUUAS5PPyisf3YVxC_VFidjxwFeTZwfpb1y4dH0G5xs)
+![img](https://www.vnewin.com/wp-content/uploads/2022/04/Docker-1.png)
 - Docker installation
 
     ```bash
@@ -280,7 +280,7 @@ docker run -p8080:8080 app_py
     terraform apply      # Apply all
     ```
 ## 7. Kubernetes
-![img](https://sue.nl/wp-content/uploads/sites/8/2022/09/6.png)
+![img](https://www.poppastring.com/blog/content/binary/Open-Live-Writer/Azure-K8s-commands_12653/k8s-azure_thumb.png)
 
 - kubernetes installation
 
@@ -373,7 +373,7 @@ kubectl get all -n app-ns
 ## 2. With Docker Compose
 
 
-![img](https://anderfernandez.com/wp-content/uploads/2023/03/Docker-Compose.png)
+![img](https://www.fuseweb.nl/assets/blog/360-docker.png)
 
 This setup uses Docker Compose to run an application and monitor its logs using Grafana and Loki.
 
